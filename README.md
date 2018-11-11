@@ -1,2 +1,2 @@
 # wedding-site
-A wedding website I made for my sister and future brother-in-law.
+Wedding Site {in-progress} designed to be run in google app engine.

@@ -2,3 +2,6 @@
 dns_problems.txt
 main.css
 main.html
+
+# ignore self
+.gitignore

@@ -1,0 +1,11 @@
+#I encountered DNS problems when trying to connect my gcp app to a custom domain. In google domains, the followind records were reported as "Record already in use".
+
+AAAA	2001:4860:4802:36::15
+AAAA	2001:4860:4802:32::15
+AAAA	2001:4860:4802:34::15
+
+A	216.239.32.21
+A	216.239.34.21
+A	216.239.36.21
+
+# This problem was solved by adding a single A record with multiple entries using the '+' button.

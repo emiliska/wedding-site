@@ -1,26 +1,25 @@
+// Thank you @picat for the beautiful code <3
+
 package main
 
 import (
-	"fmt"
-	"log"
+	"io/ioutil"
 	"net/http"
+
+	"google.golang.org/appengine"
 )
 
-func main() {
-	http.HandleFunc("/", handle)
-	http.HandleFunc("/_ah/health", healthCheckHandler)
-	log.Print("Listening on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
-
-func handle(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+// Home returns the home page of the application.
+func Home(w http.ResponseWriter, r *http.Request) {
+	file, err := ioutil.ReadFile("index.html")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprint(w, "Hayden & Samantha Craig 8.17.19 <3")
+	w.Write(file)
 }
 
-func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "ok")
+func main() {
+	http.HandleFunc("/", Home)
+	appengine.Main()
 }

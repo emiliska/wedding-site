@@ -19,7 +19,7 @@ func handle(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
-	content, err:= ioutil.ReadFile("https://storage.googleapis.com/eubankstocraig.com/index.html")
+	content, err:= ioutil.ReadFile("index.html")
 	if err!= nil {
 		log.Fatal(err)
 		return
